@@ -2,6 +2,6 @@
 
   "name" : "user",
   "version" : "0.0.1",
-  "description" : "creates a linux user"
-
+  "description" : "manages a linux user"
+  "url" : "https://github.com/melezhik/user"
 }

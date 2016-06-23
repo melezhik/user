@@ -1,8 +1,6 @@
 # SYNOPSIS
 
-Creates a linux user.
-
-
+Manages a linux user.
 
 # INSTALL
 
