@@ -1,7 +1,7 @@
 {
 
   "name" : "user",
-  "version" : "0.0.1",
+  "version" : "0.0.2",
   "description" : "manages a linux user",
   "url" : "https://github.com/melezhik/user"
 }

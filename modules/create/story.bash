@@ -1,5 +1,7 @@
-user=$(config user)
-useradd -m $user
-id $user && echo user created
+user=$(config name)
 
+if test "${user}"; then
+  useradd -m $user
+  id $user && echo user created
+fi
 
