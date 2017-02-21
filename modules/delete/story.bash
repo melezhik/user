@@ -1,4 +1,3 @@
-set -x 
 user=$(config name)
 is_managehome=$(config managehome)
 
