@@ -29,8 +29,9 @@ User gid.
 
 ## managehome
 
-Create or delete home directory
-One of two: yes|no. Default value is `on`.
+Create or delete home directory.
+
+One of two: yes|no. Default value is `yes`.
 
 ## action
 
