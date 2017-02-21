@@ -1,7 +1,15 @@
-
+set -x 
 user=$(config name)
+is_managehome=$(config managehome)
 
-if test "${user}"; then
-  userdel -r -f $user
-  id $user 2>/dev/null || echo user removed
+if [[ -n $user ]]; then
+  name_key=" $user"
 fi
+if [[ $is_managehome == yes ]]; then
+  home_key=" -r"
+fi
+
+userdel $home_key $name_key
+
+id $user 2>/dev/null || echo user removed
+

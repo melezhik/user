@@ -9,6 +9,8 @@ Manages a linux user.
 # USAGE
 
     $ sparrow plg run user --param name=sparrow
+    $ sparrow plg run user --param name=sparrow --param uid=2500 --param gid=1300
+    $ sparrow plg run user --param name=sparrow --param managehome=no
     $ sparrow plg run user --param name=sparrow --param action=delete
 
 # Parameters
@@ -17,6 +19,19 @@ Manages a linux user.
 
 User name.
   
+## uid
+
+User uid.
+
+## gid
+
+User gid.
+
+## managehome
+
+Create or delete home directory
+One of two: yes|no. Default value is `on`.
+
 ## action
 
 One of two: create|delete. Default value is `create`.
