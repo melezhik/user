@@ -2,6 +2,8 @@ user=$(config name)
 uid=$(config uid)
 gid=$(config gid)
 is_managehome=$(config managehome)
+homedir=$(config home_dir)
+groups=$(config groups)
 
 if [[ -n $uid ]]; then
   uid_key=" -u $uid"
@@ -24,7 +26,15 @@ else
   exit 2
 fi
 
-useradd $home_key $name_key $uid_key $gid_key
+if [[ $is_managehome == yes ]] && [[ -n $homedir ]]; then
+  homedir=" -d $homedir"
+fi
+
+if [[ -n $groups ]] ; then
+  groups=" -G $groups"
+fi
+
+useradd $home_key $homedir $name_key $uid_key $gid_key $groups
 
 id $user && echo user created
 

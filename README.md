@@ -8,10 +8,24 @@ Manages a linux user.
 
 # USAGE
 
+## manually
+
     $ sparrow plg run user --param name=sparrow
     $ sparrow plg run user --param name=sparrow --param uid=2500 --param gid=1300
     $ sparrow plg run user --param name=sparrow --param managehome=no
     $ sparrow plg run user --param name=sparrow --param action=delete
+
+## via sparrowdo
+
+    task-run 'create user sparrow', 'user-spigell-dev', %(
+    action   => 'create',
+    name     => 'sparrow',
+    home_dir => '/opt/sparrow',
+    uid      => 453,
+    gid      => 2300,
+    groups   => '2300,2301'
+    );
+
 
 # Parameters
 
