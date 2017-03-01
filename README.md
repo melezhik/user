@@ -17,7 +17,7 @@ Manages a linux user.
 
 ## via sparrowdo
 
-    task-run 'create user sparrow', 'user-spigell-dev', %(
+    task-run 'create user sparrow', 'user', %(
       action   => 'create',
       name     => 'sparrow',
       home_dir => '/opt/sparrow',
