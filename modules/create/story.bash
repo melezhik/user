@@ -6,16 +6,16 @@ homedir=$(config home_dir)
 groups=$(config groups)
 
 if [[ -n $uid ]]; then
-  uid_key=" -u $uid"
+  uid=" -u $uid"
 fi
 if [[ -n $user ]]; then
-  name_key=" $user"
+  name=" $user"
 else
   echo "Need user name"
   exit 1
 fi
 if [[ -n $gid ]]; then
-  gid_key=" -g $gid"
+  gid=" -g $gid"
 fi
 if [[ $is_managehome == yes ]]; then
   home_key=" -m"
@@ -34,7 +34,7 @@ if [[ -n $groups ]] ; then
   groups=" -G $groups"
 fi
 
-useradd $home_key $homedir $name_key $uid_key $gid_key $groups
+useradd $home_key $homedir $name $uid $gid $groups
 
 id $user && echo user created
 

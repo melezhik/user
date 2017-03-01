@@ -18,12 +18,12 @@ Manages a linux user.
 ## via sparrowdo
 
     task-run 'create user sparrow', 'user-spigell-dev', %(
-    action   => 'create',
-    name     => 'sparrow',
-    home_dir => '/opt/sparrow',
-    uid      => 453,
-    gid      => 2300,
-    groups   => '2300,2301'
+      action   => 'create',
+      name     => 'sparrow',
+      home_dir => '/opt/sparrow',
+      uid      => 453,
+      gid      => 2300,
+      groups   => '2301,wheel'
     );
 
 
@@ -31,7 +31,7 @@ Manages a linux user.
 
 ## name
 
-User name.
+User name. Obligatory.
   
 ## uid
 
@@ -47,14 +47,20 @@ Create or delete home directory.
 
 One of two: yes|no. Default value is `yes`.
 
+## home_dir
+
+Home directory for your user. 
+
+## groups
+
+List of groups for user. Separated by comma.
+
 ## action
 
-One of two: create|delete. Default value is `create`.
+One of three: create|delete|change. Default value is `create` if user doesn't present. If a user already exists in system it will be changed according your params.
 
 
 # AUTHOR
 
 [Alexey Melezhik](mailto:melezhik@gmail.com)
-
-
 
