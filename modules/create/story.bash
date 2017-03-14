@@ -36,5 +36,5 @@ fi
 
 useradd $home_key $homedir $name $uid $gid $groups
 
-id $user && echo user created
+id $user && echo "user $user created"
 

@@ -32,6 +32,10 @@ Manages a linux user.
 ## name
 
 User name. Obligatory.
+
+## new_login
+
+New user name.
   
 ## uid
 

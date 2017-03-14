@@ -9,7 +9,7 @@ groups=$(config groups)
 check_old_user() {
 old_user_id=`id $user`
 
-if [[ $is_home_changed == 1 ]];then
+if [[ $is_home_need_check == 1 ]];then
   old_user_home=$(grep $user /etc/passwd | cut -f 6 -d ":")
 fi
 }
@@ -30,19 +30,19 @@ if [[ -n $gid ]]; then
 fi
 
 if [[ $is_managehome == yes ]]; then
-  home_key=" -m"
+  if [[ -n $homedir ]]; then
+    is_home_need_check=1
+    new_user_home=$homedir
+    homedir_key="-m -d $homedir"
+  fi
 elif [[ $is_managehome == no ]]; then
-  home_key=" -M"
+  echo "user home dir will not move"
 else
   echo "Value of managehome is unknown (yes/no)"
   exit 2
 fi
 
-if [[ -n $homedir ]]; then
-  is_home_changed=1
-  new_user_home=$homedir
-  homedir=" -d $homedir"
-fi
+
 
 if [[ -n $groups ]] ; then
   groups=" -G $groups"
@@ -54,7 +54,7 @@ fi
 
 check_old_user
 
-usermod $name $new_login $uid $gid $home_key $homedir $groups
+usermod $name $new_login $uid $gid $homedir_key $groups 2>/dev/null 
 
 # Check new user by given login
 if [[ -n $newlogin ]]; then
@@ -64,7 +64,7 @@ else
 fi
 
 if [[ ! "$old_user_id" == "$new_user_id" ]] || [[ ! $old_user_home == $new_user_home ]] ; then
-  echo "user changed"
+  echo "user $user changed"
 else
   echo "nothing changed"
 fi

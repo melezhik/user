@@ -8,7 +8,7 @@ if [[ ! $is_user_exist == yes ]]; then
   run_story create
 fi
 
-if [[ $is_user_exist == yes ]]; then
+if [[ $is_user_exist == yes ]] && [[ ! $action == delete ]]; then
   echo "modifyng existing user"
   run_story change
 fi

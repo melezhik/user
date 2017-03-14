@@ -10,5 +10,5 @@ fi
 
 userdel $home_key $name_key
 
-id $user 2>/dev/null || echo user removed
+id $user 2>/dev/null || echo "user $user removed"
 
