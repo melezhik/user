@@ -57,7 +57,9 @@ Home directory for your user.
 
 ## groups
 
-List of groups for user. Separated by comma.
+List of user's groups. Should be comma separated list of items. For example:
+   
+   ` --param groups="developers,admins"`
 
 ## action
 
