@@ -66,5 +66,5 @@ fi
 if [[ ! "$old_user_id" == "$new_user_id" ]] || [[ ! $old_user_home == $new_user_home ]] ; then
   echo "user $user changed"
 else
-  echo "nothing changed"
+  echo "user $user - nothing changed"
 fi

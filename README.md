@@ -63,7 +63,7 @@ List of user's groups. Should be comma separated list of items. For example:
 
 ## action
 
-One of three: create|delete|change. Default value is `create` if user doesn't present. If a user already exists in system it will be changed according your params.
+One of three: create|delete. Default value is `create` if user doesn't present. If a user already exists in system it will be changed according your params.
 
 
 # AUTHOR
