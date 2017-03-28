@@ -1,10 +1,12 @@
+set -e
+
 user=$(config name)
-is_managehome=$(config managehome)
+managehome=$(config managehome)
 
 if [[ -n $user ]]; then
   name_key=" $user"
 fi
-if [[ $is_managehome == yes ]]; then
+if [[ $managehome == yes ]]; then
   home_key=" -r"
 fi
 

@@ -1,6 +1,6 @@
 # SYNOPSIS
 
-Manages a linux user.
+Manage linux users.
 
 # INSTALL
 
@@ -35,25 +35,25 @@ User name. Obligatory.
 
 ## new_login
 
-New user name.
+New user name. Used in `action=create` to change user name.
   
 ## uid
 
-User uid.
+User ID.
 
 ## gid
 
-User gid.
+User group ID.
 
 ## managehome
 
-Create or delete home directory.
+Create or delete home directory. One of two: `yes|no`. Default value is `yes`.
 
-One of two: yes|no. Default value is `yes`.
+Use this option when `action=create`.
 
 ## home_dir
 
-Home directory for your user. 
+User home directory
 
 ## groups
 
@@ -63,10 +63,11 @@ List of user's groups. Should be comma separated list of items. For example:
 
 ## action
 
-One of three: create|delete. Default value is `create` if user doesn't present. If a user already exists in system it will be changed according your params.
+One of two: `create|delete`.  Default value is `create`.
 
+If user already exists and `action=create` change user data ( login, gid, etc ).
 
-# AUTHOR
+# Maintainer
 
 [Alexey Melezhik](mailto:melezhik@gmail.com)
 
