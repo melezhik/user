@@ -8,23 +8,65 @@ Manages a linux user.
 
 # USAGE
 
+## manually
+
     $ sparrow plg run user --param name=sparrow
+    $ sparrow plg run user --param name=sparrow --param uid=2500 --param gid=1300
+    $ sparrow plg run user --param name=sparrow --param managehome=no
     $ sparrow plg run user --param name=sparrow --param action=delete
+
+## via sparrowdo
+
+    task-run 'create user sparrow', 'user', %(
+      action   => 'create',
+      name     => 'sparrow',
+      home_dir => '/opt/sparrow',
+      uid      => 453,
+      gid      => 2300,
+      groups   => '2301,wheel'
+    );
+
 
 # Parameters
 
 ## name
 
-User name.
+User name. Obligatory.
+
+## new_login
+
+New user name.
   
+## uid
+
+User uid.
+
+## gid
+
+User gid.
+
+## managehome
+
+Create or delete home directory.
+
+One of two: yes|no. Default value is `yes`.
+
+## home_dir
+
+Home directory for your user. 
+
+## groups
+
+List of user's groups. Should be comma separated list of items. For example:
+   
+   ` --param groups="developers,admins"`
+
 ## action
 
-One of two: create|delete. Default value is `create`.
+One of three: create|delete. Default value is `create` if user doesn't present. If a user already exists in system it will be changed according your params.
 
 
 # AUTHOR
 
 [Alexey Melezhik](mailto:melezhik@gmail.com)
-
-
 
