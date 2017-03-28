@@ -36,8 +36,8 @@ old_user_home=$(grep $user /etc/passwd | cut -f 6 -d ":")
 if [[ $managehome == yes ]] && [[ -n $homedir ]]; then
     new_user_home=$homedir
     homedir_args="-m -d $homedir"
-elif [[ $managehome == no ]]; then
-  echo "Don't change user home as managehome set to 'no'"
+elif [[ $managehome == no ]] || [[ ! -n $homedir ]]; then
+  echo "Don't change user home as managehome set to 'no' OR homedir not set"
   new_user_home=$old_user_home
 else
   echo "Managehome should be (yes/no)"
@@ -70,11 +70,10 @@ else
   new_user_id=$(id $user)
 fi
 
-echo current_user_id : $current_user_id 
-echo new_user_id : $new_user_id
-echo old_user_home : $old_user_home
-echo new_user_home : $new_user_home
-
+# echo current_user_id : $current_user_id 
+# echo new_user_id : $new_user_id
+# echo old_user_home : $old_user_home
+# echo new_user_home : $new_user_home
 
 if [[ ! "$current_user_id" == "$new_user_id" ]] || [[ ! $old_user_home == $new_user_home ]] ; then
   echo "user $user changed"
