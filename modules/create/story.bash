@@ -18,26 +18,46 @@ else
   exit 1
 fi
 if [[ -n $gid ]]; then
-  gid=" -g $gid"
+  if [[ $os == alpine ]]; then
+    gid=" -G $gid"
+  else
+    gid=" -g $gid"
+  fi
 fi
 
 if [[ $managehome == yes ]]; then
-  home_key=" -m"
+  if [[ $os == alpine ]]; then
+    home_key=""
+  else
+    home_key=" -m"
+  fi
 elif [[ $managehome == no ]]; then
-  home_key=" -M"
+  if [[ $os == alpine ]]; then
+    home_key=" -H"
+  else
+    home_key=" -M"
+  fi
 else
   echo "Managehome should be (yes/no)"
   exit 2
 fi
 
 if [[ $managehome == yes ]] && [[ -n $homedir ]]; then
-  homedir=" -d $homedir"
+  if [[ $os == alpine ]]; then
+    homedir=" -h $homedir"
+  else
+    homedir=" -d $homedir"
+  fi
 fi
 
 if [[ -n $groups ]] ; then
   groups=" -G $groups"
 fi
 
-useradd $home_key $homedir $name $uid $gid $groups
+if [[ $os == alpine ]]; then
+  adduser $home_key $homedir $name $uid $gid $groups -D
+else
+  useradd $home_key $homedir $name $uid $gid $groups
+fi
 
 id $user && echo "user $user created"

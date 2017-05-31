@@ -1,5 +1,11 @@
 set -e
 
+if [[ $os == alpine ]]; then
+  echo "update of existing user is not supported for $os OS"
+  exit
+fi
+
+
 debug=$(config debug)
 
 if [[ -n $debug ]]; then
@@ -54,9 +60,9 @@ if [[ -n $newlogin ]]; then
 fi
 
 
-if [[  -n $new_login ]] || \
-   [[  -n $uid ]] || \
-   [[ -n $gid ]] || \
+if [[ -n $new_login ]]    || \
+   [[ -n $uid ]]          || \
+   [[ -n $gid ]]          || \
    [[ -n $homedir_args ]] || \
    [[ -n $groups ]]; then
    usermod $name $new_login $uid $gid $homedir_args $groups 

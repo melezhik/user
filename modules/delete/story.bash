@@ -1,16 +1,23 @@
 set -e
 
 user=$(config name)
+
 managehome=$(config managehome)
 
-if [[ -n $user ]]; then
-  name_key=" $user"
-fi
 if [[ $managehome == yes ]]; then
-  home_key=" -r"
+  if [[ $os == alpine ]]; then
+    args=" --remove-home"
+  else
+    args=" -r"
+  fi
 fi
 
-userdel $home_key $name_key
+if [[ $os == alpine ]]; then
+  deluser $args $user
+else
+  userdel $args $user
+fi
+
 
 id $user 2>/dev/null || echo "user $user removed"
 
