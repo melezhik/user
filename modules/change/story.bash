@@ -19,6 +19,7 @@ gid=$(config gid)
 managehome=$(config managehome)
 homedir=$(config home_dir)
 groups=$(config groups)
+password=$(config password)
 
 
 if [[ -n $uid ]]; then
@@ -35,6 +36,7 @@ fi
 if [[ -n $gid ]]; then
   gid=" -g $gid"
 fi
+
 
 current_user_id=`id $user`
 old_user_home=$(grep $user /etc/passwd | cut -f 6 -d ":")
@@ -65,9 +67,12 @@ if [[ -n $new_login ]]    || \
    [[ -n $gid ]]          || \
    [[ -n $homedir_args ]] || \
    [[ -n $groups ]]; then
-   usermod $name $new_login $uid $gid $homedir_args $groups 
+   usermod $new_login $uid $gid $homedir_args $groups $name
 fi 
 
+if [[ -n $password ]]; then
+  echo $name:$password | chpasswd
+fi
 
 # Validate user by login
 if [[ -n $newlogin ]]; then
