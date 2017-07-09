@@ -8,6 +8,7 @@ gid=$(config gid)
 managehome=$(config managehome)
 homedir=$(config home_dir)
 groups=$(config groups)
+password=$(config password)
 
 if [[ -n $uid ]]; then
   uid=" -u $uid"
