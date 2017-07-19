@@ -1,4 +1,4 @@
-set_spl %( dev-user => 'https://github.com/Spigell/user' );
+set_spl %( dev-user => 'https://github.com/melezhik/user.git' );
 
 my $user = 'test';
 

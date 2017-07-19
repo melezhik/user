@@ -71,6 +71,7 @@ if [[ -n $new_login ]]    || \
 fi 
 
 if [[ -n $password ]]; then
+  echo "change user password ..."
   echo $name:$password | chpasswd
 fi
 
