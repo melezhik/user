@@ -2,7 +2,9 @@ set_spl %( dev-user => 'https://github.com/melezhik/user.git' );
 
 my $user = 'test';
 
-package-install ( 'sshpass' );
+group 'wheel';
+
+package-install 'sshpass';
 
 task-run "create user $user", 'dev-user', %(
   action   => 'create',

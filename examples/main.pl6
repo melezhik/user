@@ -2,6 +2,8 @@ set_spl %( dev-user => 'https://github.com/melezhik/user.git' );
 
 my $user = 'sparrow';
 
+group 'wheel';
+
 task-run "create user $user", 'dev-user', %(
   action   => 'create',
   name     => "$user",

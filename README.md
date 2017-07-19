@@ -1,6 +1,6 @@
 # SYNOPSIS
 
-Manage linux users.
+Manages Linux users.
 
 # INSTALL
 
