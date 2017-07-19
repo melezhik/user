@@ -14,12 +14,14 @@ Manage linux users.
     $ sparrow plg run user --param name=sparrow --param uid=2500 --param gid=1300
     $ sparrow plg run user --param name=sparrow --param managehome=no
     $ sparrow plg run user --param name=sparrow --param action=delete
+    $ sparrow plg run user --param name=sparrow --param action=create --param password=12345
 
 ## via sparrowdo
 
     task-run 'create user sparrow', 'user', %(
       action   => 'create',
       name     => 'sparrow',
+      password => '12345',
       home_dir => '/opt/sparrow',
       uid      => 453,
       gid      => 2300,
@@ -32,6 +34,10 @@ Manage linux users.
 ## name
 
 User name. Obligatory.
+
+## password
+
+Password for user.
 
 ## new_login
 

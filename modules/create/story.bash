@@ -1,3 +1,5 @@
+debug=$(config debug)
+[[ $debug ]] && set -x
 set -e
 
 user=$(config name)
@@ -6,6 +8,7 @@ gid=$(config gid)
 managehome=$(config managehome)
 homedir=$(config home_dir)
 groups=$(config groups)
+password=$(config password)
 
 if [[ -n $uid ]]; then
   uid=" -u $uid"
@@ -57,7 +60,12 @@ fi
 if [[ $os == alpine ]]; then
   adduser $home_key $homedir $name $uid $gid $groups -D
 else
-  useradd $home_key $homedir $name $uid $gid $groups
+  useradd $home_key $homedir $uid $gid $groups $name 
+fi
+
+if [[ -n $password ]]; then
+  echo "set password..."
+  echo $name:$password | chpasswd
 fi
 
 id $user && echo "user $user created"
